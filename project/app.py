@@ -26,9 +26,7 @@ DATABASE = "flaskr.db"
 USERNAME = "admin"
 PASSWORD = "admin"
 SECRET_KEY = "change_me"
-SQLALCHEMY_DATABASE_URI = os.getenv(
-    DATABASE_URL, f"sqlite:///{Path(basedir).joinpath(DATABASE)}"
-)
+SQLALCHEMY_DATABASE_URI = DATABASE_URL
 SQLALCHEMY_TRACK_MODIFICATIONS = False
 
 
