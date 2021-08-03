@@ -18,13 +18,16 @@ from flask_sqlalchemy import SQLAlchemy
 
 basedir = Path(__file__).resolve().parent
 
+DATABASE_URL = os.getenv("DATABASE_URL")
+if DATABASE_URL.startswith("postgres://"):
+    DATABASE_URL = DATABASE_URL.replace("postgres://", "postgresql://", 1)
 # configuration
 DATABASE = "flaskr.db"
 USERNAME = "admin"
 PASSWORD = "admin"
 SECRET_KEY = "change_me"
 SQLALCHEMY_DATABASE_URI = os.getenv(
-    "DATABASE_URL", f"sqlite:///{Path(basedir).joinpath(DATABASE)}"
+    DATABASE_URL, f"sqlite:///{Path(basedir).joinpath(DATABASE)}"
 )
 SQLALCHEMY_TRACK_MODIFICATIONS = False
 
